@@ -1,0 +1,608 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  /* Dark purple gradient background */
+  --background: linear-gradient(135deg, #1a0b2e 0%, #16213e 25%, #0f0c29 50%, #24243e 75%, #000000 100%);
+  --foreground: #f8fafc;
+  --card: rgba(139, 92, 246, 0.08);
+  --card-foreground: #e2e8f0;
+  --popover: rgba(30, 17, 56, 0.95);
+  --popover-foreground: #f1f5f9;
+  /* Neon violet primary */
+  --primary: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+  --primary-foreground: #ffffff;
+  --secondary: rgba(139, 92, 246, 0.15);
+  --secondary-foreground: #e2e8f0;
+  --muted: rgba(99, 102, 241, 0.1);
+  --muted-foreground: #cbd5e1;
+  --accent: rgba(168, 85, 247, 0.2);
+  --accent-foreground: #f1f5f9;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(139, 92, 246, 0.3);
+  --input: rgba(30, 17, 56, 0.8);
+  --input-background: rgba(30, 17, 56, 0.6);
+  --switch-background: rgba(139, 92, 246, 0.2);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: rgba(168, 85, 247, 0.5);
+  --chart-1: #8b5cf6;
+  --chart-2: #06b6d4;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --radius: 0.625rem;
+  --sidebar: rgba(30, 17, 56, 0.9);
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(139, 92, 246, 0.2);
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: rgba(139, 92, 246, 0.3);
+  --sidebar-ring: rgba(168, 85, 247, 0.4);
+}
+
+.dark {
+  /* Enhanced dark purple theme with neon accents */
+  --background: linear-gradient(135deg, #1a0b2e 0%, #16213e 25%, #0f0c29 50%, #24243e 75%, #000000 100%);
+  --foreground: #f8fafc;
+  --card: rgba(139, 92, 246, 0.12);
+  --card-foreground: #e2e8f0;
+  --popover: rgba(26, 11, 46, 0.95);
+  --popover-foreground: #f1f5f9;
+  --primary: linear-gradient(135deg, #a855f7 0%, #c084fc 50%, #d8b4fe 100%);
+  --primary-foreground: #ffffff;
+  --secondary: rgba(139, 92, 246, 0.2);
+  --secondary-foreground: #f1f5f9;
+  --muted: rgba(99, 102, 241, 0.15);
+  --muted-foreground: #cbd5e1;
+  --accent: rgba(168, 85, 247, 0.25);
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(139, 92, 246, 0.35);
+  --input: rgba(26, 11, 46, 0.8);
+  --ring: rgba(168, 85, 247, 0.6);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: #a855f7;
+  --chart-2: #06b6d4;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --sidebar: rgba(26, 11, 46, 0.9);
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(139, 92, 246, 0.25);
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: rgba(139, 92, 246, 0.4);
+  --sidebar-ring: rgba(168, 85, 247, 0.5);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Hide all scrollbars globally */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  *::-webkit-scrollbar {
+    display: none; /* WebKit */
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply text-foreground;
+    background: var(--background);
+    position: fixed;
+    inset: 0;
+  }
+  
+  /* Ensure proper backdrop for glassmorphism effects */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Mobile viewport fixes */
+  #root {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Mobile safe area utilities */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+  
+  .mb-safe {
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Responsive navigation heights */
+@media (max-width: 639px) {
+  .mobile-nav-height {
+    height: 64px;
+  }
+  
+  .mobile-top-height {
+    height: 56px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .mobile-nav-height {
+    height: 68px;
+  }
+  
+  .mobile-top-height {
+    height: 60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mobile-nav-height {
+    height: 72px;
+  }
+  
+  .mobile-top-height {
+    height: 64px;
+  }
+}
+
+/* Responsive container utilities */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    max-width: 640px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-responsive {
+    max-width: 1536px;
+  }
+}
+
+/* Additional gradient utilities for enhanced dark purple theme */
+.gradient-bg {
+  background: linear-gradient(135deg, #1a0b2e 0%, #16213e 25%, #0f0c29 50%, #24243e 75%, #000000 100%);
+}
+
+.glass-card {
+  background: rgba(26, 11, 46, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2), 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+.text-shadow-light {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px rgba(168, 85, 247, 0.3);
+}
+
+/* Neon glow utilities for interactive elements */
+.neon-purple {
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3), 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+.neon-cyan {
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3), 0 0 30px rgba(6, 182, 212, 0.1);
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+}
+
+.purple-gradient-hover {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 50%, #d8b4fe 100%);
+}
+
+/* Last seen message indicator */
+.last-seen-indicator {
+  position: relative;
+  animation: lastSeenPulse 2s ease-in-out;
+}
+
+.last-seen-indicator::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, var(--primary), var(--primary));
+  border-radius: 2px;
+  opacity: 0.8;
+  animation: lastSeenSlideIn 0.5s ease-out;
+}
+
+@keyframes lastSeenPulse {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.02); }
+  20% { transform: scale(1); }
+}
+
+@keyframes lastSeenSlideIn {
+  0% { 
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateX(0);
+    opacity: 0.8;
+  }
+}
+
+/* Global container containment */
+.mobile-container {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1024px) {
+  .mobile-container {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}
+
+/* Clips specific styles */
+.clips-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.clips-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Video optimization for mobile */
+video {
+  -webkit-playsinline: 1;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Enhanced snap scrolling for clips */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.snap-always {
+  scroll-snap-stop: always;
+}
+
+/* Better video loading state */
+video[poster] {
+  object-fit: cover;
+}
+
+/* Prevent text selection on clips interface */
+.clips-interface {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Heart animation for double-tap like */
+@keyframes heartPop {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) translateY(-50px) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced neon glow effects for dark purple theme */
+.neon-glow {
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6), 0 0 16px rgba(168, 85, 247, 0.4), 0 0 24px rgba(168, 85, 247, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.neon-glow:hover {
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.8), 0 0 24px rgba(168, 85, 247, 0.6), 0 0 36px rgba(168, 85, 247, 0.4);
+}
+
+.neon-text {
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.8), 0 0 16px rgba(168, 85, 247, 0.6), 0 0 24px rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+}
+
+.neon-border {
+  border: 1px solid rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}
+
+.cyber-glow {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.cyber-glow:hover {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.3);
+}
+
+/* Reels specific styles */
+.reels-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+.reels-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 9:16 aspect ratio for reels */
+.reel-aspect {
+  aspect-ratio: 9 / 16;
+}
+
+/* Smooth scrolling for reels */
+.reel-scroll {
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
+  overscroll-behavior: none;
+}
+
+.reel-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Prevent overscroll bounce on mobile */
+@supports (overscroll-behavior: none) {
+  .reels-container {
+    overscroll-behavior: none;
+  }
+}
+
+/* Mobile viewport utilities */
+.mobile-safe {
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.mobile-h-safe {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 0;
+  overflow-y: hidden;
+}
+
+/* Prevent horizontal overflow on all elements */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Text clamp utilities */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Additional mobile containment */
+@media (max-width: 768px) {
+  .container {
+    width: 100vw;
+    max-width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .mobile-full-width {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+}
+
+/* Ensure no component can overflow the viewport */
+.overflow-containment {
+  contain: layout style;
+  overflow: hidden;
+}
+
+/* Force mobile viewport constraints */
+@media (max-width: 1024px) {
+  html, body, #root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Remove any potential margin/padding on mobile */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
