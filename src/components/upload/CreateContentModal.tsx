@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { Image, Bookmark, Video, Users } from 'lucide-react';
 import { CreatePostModal } from './CreatePostModal';
-import { CreateStoryModal } from './CreateStoryModal';
+import { CreateStoryModal } from '../modals/CreateStoryModal';
 import { CreateClipModal } from './CreateClipModal';
 import { CreateRoomModal } from './CreateRoomModal';
 
