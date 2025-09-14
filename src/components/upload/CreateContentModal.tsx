@@ -5,7 +5,7 @@ import { Image, Bookmark, Video, Users } from 'lucide-react';
 import { CreatePostModal } from './CreatePostModal';
 import { CreateStoryModal } from '../modals/CreateStoryModal';
 import { CreateClipModal } from './CreateClipModal';
-import { CreateRoomModal } from './CreateRoomModal';
+import { CreateRoomModal } from '../modals/CreateRoomModal';
 
 interface CreateContentModalProps {
   isOpen: boolean;
