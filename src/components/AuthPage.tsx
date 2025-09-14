@@ -1,39 +1,47 @@
 import React, { useState } from 'react';
+import { MobileLayout } from './mobile/MobileLayout';
+import { useAuthContext } from './auth/AuthProvider';
 import { Button } from './ui/button';
 import { SignUpModal } from './modals/SignUpModal';
 import { SignInModal } from './modals/SignInModal';
 
 interface AuthPageProps {
-  onAuthenticated: (userData: {
-    username: string;
-    displayName: string;
-    email: string;
-    password: string;
-  }) => void;
+  onAuthenticated: () => void;
 }
 
 export function AuthPage({ onAuthenticated }: AuthPageProps) {
+  const { signUp, signIn } = useAuthContext();
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
-  const handleSignUp = (userData: {
-    username: string;
-    displayName: string;
-    email: string;
-    password: string;
-  }) => {
-    // Store user data in localStorage for persistence
-    localStorage.setItem('textenger_user', JSON.stringify(userData));
-    onAuthenticated(userData);
+  const handleSignUp = async (email: string, password: string, username: string, displayName: string) => {
+    try {
+      const { user, error } = await signUp(email, password, username, displayName);
+      if (error) {
+        throw error;
+      }
+      if (user) {
+        onAuthenticated();
+      }
+    } catch (error) {
+      console.error('Sign up error:', error);
+      throw error;
+    }
   };
 
-  const handleSignIn = (userData: {
-    username: string;
-    displayName: string;
-    email: string;
-    password: string;
-  }) => {
-    onAuthenticated(userData);
+  const handleSignIn = async (email: string, password: string) => {
+    try {
+      const { user, error } = await signIn(email, password);
+      if (error) {
+        throw error;
+      }
+      if (user) {
+        onAuthenticated();
+      }
+    } catch (error) {
+      console.error('Sign in error:', error);
+      throw error;
+    }
   };
 
   const handleSwitchToSignUp = () => {
@@ -47,7 +55,8 @@ export function AuthPage({ onAuthenticated }: AuthPageProps) {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center p-4" style={{ background: 'var(--background)' }}>
+    <MobileLayout>
+      <div className="h-full flex items-center justify-center p-6">
       <div className="max-w-md w-full text-center space-y-8">
         {/* Logo and Branding */}
         <div className="space-y-4">
@@ -101,7 +110,7 @@ export function AuthPage({ onAuthenticated }: AuthPageProps) {
             <button className="text-primary hover:underline">Privacy Policy</button>
           </p>
         </div>
-      </div>
+      </MobileLayout>
 
       {/* Sign Up Modal */}
       <SignUpModal
@@ -118,6 +127,5 @@ export function AuthPage({ onAuthenticated }: AuthPageProps) {
         onSignIn={handleSignIn}
         onSwitchToSignUp={handleSwitchToSignUp}
       />
-    </div>
   );
 }

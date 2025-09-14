@@ -10,12 +10,7 @@ import { Eye, EyeOff, AlertCircle } from 'lucide-react';
 interface SignUpModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSignUp: (userData: {
-    username: string;
-    displayName: string;
-    email: string;
-    password: string;
-  }) => void;
+  onSignUp: (email: string, password: string, username: string, displayName: string) => Promise<void>;
   onSwitchToSignIn?: () => void;
 }
 
@@ -92,17 +87,20 @@ export function SignUpModal({ isOpen, onClose, onSignUp, onSwitchToSignIn }: Sig
 
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      onSignUp({
-        username: formData.username,
-        displayName: formData.displayName,
-        email: formData.email,
-        password: formData.password,
-      });
-      setIsLoading(false);
+    try {
+      await onSignUp(
+        formData.email,
+        formData.password,
+        formData.username,
+        formData.displayName
+      );
       onClose();
-    }, 1500);
+    } catch (error) {
+      console.error('Sign up failed:', error);
+      setErrors({ email: 'Sign up failed. Please try again.' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {

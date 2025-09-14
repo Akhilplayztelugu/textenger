@@ -8,12 +8,7 @@ import { Eye, EyeOff, Loader2 } from 'lucide-react';
 interface SignInModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSignIn: (userData: {
-    username: string;
-    displayName: string;
-    email: string;
-    password: string;
-  }) => void;
+  onSignIn: (email: string, password: string) => Promise<void>;
   onSwitchToSignUp?: () => void;
 }
 
@@ -69,33 +64,17 @@ export function SignInModal({ isOpen, onClose, onSignIn, onSwitchToSignUp }: Sig
 
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      // Check if user exists in localStorage (mock authentication)
-      const storedUser = localStorage.getItem('textenger_user');
-      
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
-        
-        // Check if credentials match
-        const isEmailMatch = user.email.toLowerCase() === formData.emailOrUsername.toLowerCase();
-        const isUsernameMatch = user.username.toLowerCase() === formData.emailOrUsername.toLowerCase();
-        const isPasswordMatch = user.password === formData.password;
-        
-        if ((isEmailMatch || isUsernameMatch) && isPasswordMatch) {
-          onSignIn(user);
-          onClose();
-          setFormData({ emailOrUsername: '', password: '' });
-          setErrors({});
-        } else {
-          setErrors({ password: 'Invalid credentials. Please check your email/username and password.' });
-        }
-      } else {
-        setErrors({ emailOrUsername: 'No account found. Please sign up first.' });
-      }
-      
+    try {
+      await onSignIn(formData.emailOrUsername, formData.password);
+      onClose();
+      setFormData({ emailOrUsername: '', password: '' });
+      setErrors({});
+    } catch (error) {
+      console.error('Sign in failed:', error);
+      setErrors({ password: 'Invalid credentials. Please check your email and password.' });
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   const handleClose = () => {
